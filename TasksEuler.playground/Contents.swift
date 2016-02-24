@@ -4,38 +4,6 @@ import UIKit
 
 
 
-//Algorithm Vigineer
-
-func encryptDecrypt(input: String, staticKey: String) -> String? {
-    let key = staticKey.utf8
-    print(input.utf8.enumerate())
-    let bytes = input.utf8.enumerate().map({
-        $1 ^ key[key.startIndex.advancedBy($0 % key.count)]
-    })
-    print(bytes)
-    return String(bytes: bytes, encoding: NSUTF8StringEncoding)
-}
-func encryptDecryptCeaser(input: String, key: UInt8) -> String? {
-    let bytes = input.utf8.enumerate().map({
-        $1 ^ key
-    })
-    print(bytes)
-    return String(bytes: bytes, encoding: NSUTF8StringEncoding)
-}
-
-let key:UInt8 = 2
-let string = "ABCDEFG"
-let encrypted = encryptDecryptCeaser(string, key: key)!
-let decrypted = encryptDecryptCeaser(encrypted, key: key)!
-print(encrypted)
-print(decrypted)
-for (i, ii) in "hello".utf8.enumerate() {
-    
-    print("i = \(i) and ii = \(ii) and ii ^ 2 = \(ii ^ 2)" )
-    
-}
-
-
 //----------------------------------------------------------------------------------------
 //---------------------------------------TASK-32-----18-02-2016----------------------------
 //----------------------------------------------------------------------------------------
@@ -1514,13 +1482,9 @@ for (i, ii) in "hello".utf8.enumerate() {
 //task2FibonacciEvenSumUnderN(4000000)
 
 
-
-
-
 //----------------------------------------------------------------------------------------
 //---------------------------------------TASK-1-----18-01-2016----------------------------
 //----------------------------------------------------------------------------------------
-
 
 //func task1MultipliesOfNumbers(var multiples: [Int], below: Int) -> Int {
 //
