@@ -2,8 +2,56 @@
 // var threeDoubles = [Double](count: 3, repeatedValue: 0.0)
 import UIKit
 
+89
 
-
+func encodeToIntArray(message: String, key: (e: Int,n: Int)) -> [Int] {
+    
+    let messUniCode = message.utf8.enumerate().map { $1 }
+    var resultEncodeMess = [Int]()
+    
+    for mes in messUniCode {
+        var k = 1
+        let character = Int(mes)
+        for _ in 1...key.e {
+            k *= character
+            k = k % key.n
+        }
+        resultEncodeMess.append(k)
+        print(k)
+    }
+    print(messUniCode)
+    print(resultEncodeMess)
+    return resultEncodeMess
+}
+func encodeFromIntArray(message: [Int], key: (e: Int,n: Int)) -> String {
+    
+    var resultEncodeMess = [Int]()
+    
+    for mes in message {
+        var k = 1
+        let character = Int(mes)
+        for _ in 1...key.e {
+            k *= character
+            k = k % key.n
+        }
+        resultEncodeMess.append(k)
+        print(k)
+    }
+    print(message)
+    print(resultEncodeMess)
+    var resultString = String()
+    print(resultString)
+    
+    for num in resultEncodeMess {
+        resultString += String(UnicodeScalar(num))
+    }
+    print(resultString)
+    return resultString
+}
+let publicKey = (257, 899)
+let privateKey = (353, 899)
+let encodeMess = encodeToIntArray("Dim ", key: publicKey)
+let decodeMess = encodeFromIntArray(encodeMess, key: privateKey)
 //----------------------------------------------------------------------------------------
 //---------------------------------------TASK-32-----18-02-2016----------------------------
 //----------------------------------------------------------------------------------------
